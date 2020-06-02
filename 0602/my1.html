@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <style>
+        /* SVG(Scalable Vectop Graphic) 벡터이미지를 만들기 위한 포맷으로 w3c에서 만든 벡터이미지 표준 */
+        .st0 {
+            fill: none;
+            stroke: #000000;
+            stroke-miterlimit: 10;
+        }
+
+        .path {
+            stroke-dasharray: 3000; /* path의 길이(length) */
+            stroke-dashoffset: 0;
+            animation: dash 5s linear infinite;
+        }
+
+        @keyframes dash {
+            from {stroke-dashoffset:3000;}
+            to {stroke-dashoffset:0;}
+        }
+
+        /* 
+        
+        stroke-dasharray
+        도형 윤곽선을 그리는데 사용되는 dash간격 및 패턴
+        stroke-dasharray:10,5일 경우 drawn이 10이되고 gap이 5이다.
+
+        stroke-dashoffset
+        dash패턴 거리 지정
+        stroke-dathoffset:값일 경우 값만큼 제외하고 stroke를 시작한다.
+        
+         */
+        img { position: absolute;
+        left: 0;
+        top: 0;
+            opacity: 1; animation: ani 5s forwards;}
+            
+        @keyframes ani {
+            0% {opacity: 0;} 
+            50% {opacity: 0;} 
+            100% {opacity: 1;} 
+        }
+
+    </style>
+
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        $(function () {
+            var pathes = $('#Layer_1').find('path');
+            pathes.each(function(i, path){
+                //각 path의 길이를 구한다.
+                var total_length = path.getTotalLength();
+                console.log(total_length);
+            })
+        });
+    </script>
+</head>
+
+<body>
+
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" viewBox="0 0 1280 1024" style="enable-background:new 0 0 1280 1024;" xml:space="preserve">
+
+        <path class="st0 path"
+            d="M589.5,317.5c-93,93-173,277-58,291s302-64,270-146s-132-96-132-47s-68,158,0,121s93-71,61-62" />
+    </svg>
+
+    <img src="../0602/img/9810_0119_0759.jpg" alt="배경" />
+
+</body>
+
+</html>
